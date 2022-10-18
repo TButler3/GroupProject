@@ -8,6 +8,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title><c:out value="Add a Review!"/></title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+<!--  My css -->
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
 	<div class="container add">
