@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+*{
+    margin: 0auto;
+    padding: 0;
+}
+div.container{
+    display:flex;
+    background-color: lightgray;
+    flex-direction: column;
+    width: 100vw;
+    height: 1000px;
+    justify-content: space-around;
+}
+div.topLogin{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+}
+main{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: top;
+    height: 80%;
+}
+form{
+    background-color: darkgray;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+div.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+form.logout{
+    background-color: transparent;
+    width: 100%;
+}
+form.edit{
+    align-self: center;
+    justify-self: center;
+}
