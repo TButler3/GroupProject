@@ -26,11 +26,18 @@ public class LoginController {
     @Autowired
     private ReviewService reviewServ;
     
-    @GetMapping("/login")
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("newUser", new User());
         model.addAttribute("newLogin", new LoginUser());
         return "login.jsp";
+    }
+    
+    @GetMapping("/register")
+    public String newRegister(Model model) {
+    	model.addAttribute("newUser", new User());
+        model.addAttribute("newLogin", new LoginUser());
+        return "register.jsp";
     }
     
     @PostMapping("/register")
@@ -40,7 +47,7 @@ public class LoginController {
     	userServ.register(newUser, result);
         if(result.hasErrors()) {
             model.addAttribute("newLogin", new LoginUser());
-            return "login.jsp";
+            return "register.jsp";
         }
         
         session.setAttribute("id", newUser.getId());
@@ -81,6 +88,6 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
     	session.invalidate();
-    	return "redirect:/login";
+    	return "redirect:/";
     }
 }
