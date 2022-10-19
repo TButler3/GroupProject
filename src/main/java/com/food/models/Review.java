@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -45,6 +46,10 @@ public class Review {
 	@NotEmpty(message="Review is required")
 	private String review;
 	
+	@NotEmpty(message="Rating is required")
+	@Max(value=5, message="Rating must be between 0 and 5")
+	private int rating;
+	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
@@ -57,7 +62,7 @@ public class Review {
     
     public Review() {}
     
-    public Review(Long id, String restaurant, String state, Date dateVisited, String dish, double price, String review) {
+    public Review(Long id, String restaurant, String state, Date dateVisited, String dish, double price, String review, int rating) {
     	this.id = id;
     	this.restaurant = restaurant;
     	this.state = state;
@@ -65,6 +70,7 @@ public class Review {
     	this.dish = dish;
     	this.price = price;
     	this.review = review;
+    	this.rating = rating;
     }
     
     @PrePersist
@@ -137,6 +143,15 @@ public class Review {
 
 	public void setReview(String review) {
 		this.review = review;
+	}
+	
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
 	public Date getCreatedAt() {
