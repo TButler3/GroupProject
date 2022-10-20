@@ -43,14 +43,16 @@ public class Review {
 	private String dish;
 	
 	@NotNull(message="Price is required")
+
 	private double price;
+
 	
 	@NotEmpty(message="Review is required")
 	private String reviewX;
 	
 	@NotNull(message="Rating is required")
 	@Max(value=5, message="Rating must be between 0 and 5")
-	private int rating;
+	private Integer rating;
 	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -65,6 +67,7 @@ public class Review {
     public Review() {}
     
     public Review(Long id, String restaurant, String state, Date dateVisited, String dish, double price, String reviewX, int rating) {
+
     	this.id = id;
     	this.restaurant = restaurant;
     	this.state = state;
@@ -131,11 +134,11 @@ public class Review {
 		this.dish = dish;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -148,11 +151,11 @@ public class Review {
 	}
 	
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 

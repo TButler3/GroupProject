@@ -89,10 +89,14 @@ public class LoginController {
     }
     
     @GetMapping("/review/new")
-    public String newReview(HttpSession session, @ModelAttribute("review") Review review) {
+
+    public String newReview(HttpSession session, @ModelAttribute("review") Review review, Model model) {
+
     	if(session.getAttribute("id") == null) {
     		return "redirect:/";
     	} else {
+        	User user = userServ.findbyId((Long) session.getAttribute("id"));
+        	model.addAttribute("user", user);
     		return "addReview.jsp";
     	}
     }
@@ -100,7 +104,9 @@ public class LoginController {
     @PostMapping("/reviews/add")
     public String createReview(@Valid @ModelAttribute("review") Review review,
     		BindingResult result) {
+    	System.out.println(result.getAllErrors());
     	if(result.hasErrors()) {
+    		
     		return "addReview.jsp";
     	} else {
     		reviewServ.createReview(review);
@@ -116,8 +122,9 @@ public class LoginController {
     	} else {
     		Review oneReview = reviewServ.findReview(id);
     		model.addAttribute("review", oneReview);
-    		
-    		User user = userServ.findbyId((Long) session.getAttribute("id"));
+
+        	User user = userServ.findbyId((Long) session.getAttribute("id"));
+
         	model.addAttribute("user", user);
     		return "singleReview.jsp";
     	}
@@ -133,6 +140,8 @@ public class LoginController {
     	} else {
     		Review oneReview = reviewServ.findReview(id);
     		model.addAttribute("review", oneReview);
+        	User user = userServ.findbyId((Long) session.getAttribute("id"));
+        	model.addAttribute("user", user);
     		return "editReview.jsp";
     	}
     }
