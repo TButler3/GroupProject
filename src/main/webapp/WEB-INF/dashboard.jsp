@@ -16,11 +16,11 @@
 <body>
 	<header>
         <h4>Menu Critic</h4>
-        <p><c:out value="${user.userName}"/></p>
+        <p>Welcome <c:out value="${user.userName}"/></p>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Write a Review</a></li>
-                <li><a href="#">Your Reviews</a></li>
+                <li><a href="/review/new">Write a Review</a></li>
+                <li><a href="/reviews/user/${user.id}">Your Reviews</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
@@ -52,10 +52,13 @@
                     <td><c:out value="${review.user.userName}"/></td>
                     <td><c:out value="${review.rating}"/></td>
                     <td class="table-links">
-                        <a href="#">View</a>
+                        <a href="/review/${review.id}">View</a>
                         <c:if test="${review.user.id==id}">
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
+                        <a href="/edit/${review.id}">Edit</a>
+                        <form action="/delete/${review.id}" method="POST">
+                        	<input type="hidden" name="_method" value="Delete"/>
+                        	<input class="view btn btn-link delete-link" type="submit" value="Delete"/>
+                        </form>
                         </c:if>
                     </td>
                 </tr>
