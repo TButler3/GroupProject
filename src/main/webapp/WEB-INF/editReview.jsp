@@ -20,11 +20,13 @@
 <body>
 	<header>
         <a href="/dashboard"><h4>Menu Critic</h4></a>
-        <p>Welcome <c:out value="${user.userName}"/></p>
+
+        <p>Welcome <c:out value="${review.user.userName}"/></p>
         <nav>
             <ul class="nav-links">
                 <li><a href="/review/new">Write a Review</a></li>
-                <li><a href="/reviews/user/${user.id}">Your Reviews</a></li>
+                <li><a href="/dashboard">Home</a></li>
+
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
@@ -133,7 +135,9 @@
 				<section>
 					<form:errors path="rating" class="text-danger"/>
 					<form:label path="rating">Rating: </form:label>
-					<form:input path="rating"/>
+
+					<form:input path="rating" type="number"/>
+
 				</section>
 				<form:hidden path="user" value="${review.user.id}"/>
 				<input type="submit" value="Submit"/>

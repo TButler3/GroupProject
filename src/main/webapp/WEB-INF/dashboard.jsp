@@ -54,7 +54,7 @@
                     <td class="table-links">
                         <a href="/review/${review.id}">View</a>
                         <c:if test="${review.user.id==id}">
-                        <a href="/edit/${review.id}">Edit</a>
+                        <a href="/review/${review.id}/edit">Edit</a>
                         <form action="/delete/${review.id}" method="POST">
                         	<input type="hidden" name="_method" value="Delete"/>
                         	<input class="view btn btn-link delete-link" type="submit" value="Delete"/>

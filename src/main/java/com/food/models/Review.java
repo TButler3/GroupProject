@@ -43,7 +43,9 @@ public class Review {
 	private String dish;
 	
 	@NotNull(message="Price is required")
-	private Double price;
+
+	private double price;
+
 	
 	@NotEmpty(message="Review is required")
 	private String reviewX;
@@ -64,7 +66,8 @@ public class Review {
     
     public Review() {}
     
-    public Review(Long id, String restaurant, String state, Date dateVisited, String dish, Double price, String reviewX, Integer rating) {
+    public Review(Long id, String restaurant, String state, Date dateVisited, String dish, double price, String reviewX, int rating) {
+
     	this.id = id;
     	this.restaurant = restaurant;
     	this.state = state;
