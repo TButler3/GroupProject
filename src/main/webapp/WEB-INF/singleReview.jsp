@@ -8,65 +8,87 @@
 <title><c:out value="Review of ${ review.restaurant }"/></title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&family=Playfair+Display&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
 <!--  My css -->
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/singleReview.css"/>
 </head>
 <body>
+	<header>
+        <a href="/dashboard"><h4>Menu Critic</h4></a>
+        <p>Welcome <c:out value="${user.userName}"/></p>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/review/new">Write a Review</a></li>
+                <li><a href="/reviews/user/${user.id}">Your Reviews</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+        <div class="hero">
+        <div class="container">
+            <div class="inner-text">
+                <p>Planning a night out on the town?<br>
+                Check out this review first.</p>
+            </div>
+        </div>
+    </div>
 	<div class="container">
-		<div class=header>
-			<div class="left">
-				<h1>MenuCritic</h1>
-				<h3><c:out value="Welcome, ${ user.userName }"/></h3>
-			</div>
-			<div class="right">
-				<a href="/dashboard">Home</a>
-				<a href="/reviews/new">Write a Review</a>
-				<a href="/reviews/${user.id}">Your Reviews</a>
-				<form class="logout" action="/logout" method="POST"><input id="logout" class="btn btn-link" type="submit" value="Log Out"/></form>
-			</div>
-			
+		<div class="table">
+			<table class="table table-striped">
+				<thead>
+					<tr><th><c:out value="Review of ${review.restaurant}"/></th></tr>
+				</thead>
+				<tbody>
+					<tr><td>
+						<c:choose>	
+							<c:when test = "${review.user.id == sessionScope.id}">
+								<c:out value="Posted by: "/>
+								<c:out value="You!"/>
+							</c:when>
+							<c:otherwise>
+								<c:out value="Posted by: "/>
+								<c:out value="${review.user.userName}"/>
+							</c:otherwise>
+						</c:choose></td>
+					</tr>
+					<tr><td>
+						Location:
+						<c:out value=" ${review.city}, ${ review.state }"/></td>
+					</tr>
+					<tr id="dish"><td>
+						Dish Eaten:
+						<c:out value=" ${review.dish}" /></td> 
+					</tr>
+					<tr id="price"><td>
+						Price: <c:out value=" $ ${review.price}" /></td> 
+					</tr>
+					<tr id="review"><td>
+						Review: 
+						<c:out value=" ${review.reviewX}" /></td> 
+					</tr>
+					<tr id="dateVisited"><td>
+						Date of Visit: 
+						<c:out value=" ${review.dateVisited.toString()}" /></td> 
+					</tr>
+					<c:if test = "${review.user.id == sessionScope.id}">
+					<tr>
+						<td class="table-links">
+							<a href="/review/${review.id}/edit">Edit</a>
+							<form action="/delete/${review.id}" method="POST">
+	                        	<input type="hidden" name="_method" value="Delete"/>
+	                        	<input class="view btn btn-link delete-link" type="submit" value="Delete"/>					
+							</form>
+						</td>
+					</tr>
+					</c:if>
+				
+				</tbody>
+				
+			</table>
 		</div>
-		<main>
-			<div class="top">
-				<h2><c:out value="Review of ${review.restaurant}"/></h2>
-				<a href="/dashboard">Home</a>
-			</div>
-			<div class="section">
-				<c:choose>	
-					<c:when test = "${review.user.id == sessionScope.userId}">
-						<p><c:out value="Posted by: "/></p>
-						<p><c:out value="You!"/></p>
-					</c:when>
-					<c:otherwise>
-						<p><c:out value="Posted by: "/></p>
-						<p><c:out value="${review.user.userName}"/></p>
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="section">
-				<p>Location: </p>
-				<p><c:out value="${review.city}, ${ review.state }"/></p>
-			</div>
-			<div class="section" id="dish">
-				<p>Dish Eaten: </p>
-				<p><c:out value="${review.dish}" /></p> 
-			</div>
-			<div class="section" id="price">
-				<p>Price: </p>
-				<p><c:out value="$ ${review.price}" /></p> 
-			</div>
-			<div class="section" id="review">
-				<p>Review: </p>
-				<p><c:out value="${review.review}" /></p> 
-			</div>
-			<div class="section" id="dateVisited">
-				<p>Date of Visit: </p>
-				<p><c:out value="${review.dateVisited}" /></p> 
-			</div>
-			<c:if test = "${review.user.id == sessionScope.userId}">	
-				<form action="/review/${review.id}/edit" method="GET"><input type="submit" value="Edit"/></form>
-			</c:if>
-		</main>
 	</div>
 </body>
 </html>

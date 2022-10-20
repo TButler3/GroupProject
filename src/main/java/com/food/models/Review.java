@@ -15,6 +15,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,21 +35,22 @@ public class Review {
 	@NotEmpty(message="State is required")
 	private String state;
 	
+	@NotNull(message="Date visited is required")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dateVisited;
 	
 	@NotEmpty(message="Dish is required")
 	private String dish;
 	
-	@NotEmpty(message="Price is required")
-	private double price;
+	@NotNull(message="Price is required")
+	private Double price;
 	
 	@NotEmpty(message="Review is required")
-	private String review;
+	private String reviewX;
 	
-	@NotEmpty(message="Rating is required")
+	@NotNull(message="Rating is required")
 	@Max(value=5, message="Rating must be between 0 and 5")
-	private int rating;
+	private Integer rating;
 	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -62,14 +64,14 @@ public class Review {
     
     public Review() {}
     
-    public Review(Long id, String restaurant, String state, Date dateVisited, String dish, double price, String review, int rating) {
+    public Review(Long id, String restaurant, String state, Date dateVisited, String dish, Double price, String reviewX, Integer rating) {
     	this.id = id;
     	this.restaurant = restaurant;
     	this.state = state;
     	this.dateVisited = dateVisited;
     	this.dish = dish;
     	this.price = price;
-    	this.review = review;
+    	this.reviewX = reviewX;
     	this.rating = rating;
     }
     
@@ -129,28 +131,28 @@ public class Review {
 		this.dish = dish;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	public String getReview() {
-		return review;
+	public String getReviewX() {
+		return reviewX;
 	}
 
-	public void setReview(String review) {
-		this.review = review;
+	public void setReviewX(String reviewX) {
+		this.reviewX = reviewX;
 	}
 	
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 

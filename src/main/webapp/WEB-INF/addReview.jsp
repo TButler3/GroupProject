@@ -10,27 +10,38 @@
 <title><c:out value="Add a Review!"/></title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&family=Playfair+Display&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
 <!--  My css -->
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/review.css"/>
 </head>
 <body>
-	<div class="container add">
-		<div class=header>
-			<div class="left">
-				<h1>MenuCritic</h1>
-				<h3><c:out value="Welcome, ${ user.userName }"/></h3>
-			</div>
-			<div class="right">
-				<a href="/dashboard">Home</a>
-				<a href="/reviews/${user.id}">Your Reviews</a>
-				<form class="logout" action="/logout" method="POST"><input id="logout" class="btn btn-link" type="submit" value="Log Out"/></form>
-			</div>
-			
+	<header>
+        <a href="/dashboard"><h4>Menu Critic</h4></a>
+        <p>Welcome <c:out value="${user.userName}"/></p>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/review/new">Write a Review</a></li>
+                <li><a href="/reviews/user/${user.id}">Your Reviews</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="hero">
+        <div class="container">
+            <div class="inner-text">
+                <p>Had a night out on the town?<br>
+                Leave a review for others.</p>
+            </div>
+        </div>
+    </div>
+	<div class="form-body">
+		<div class="title">
+			<h2 class="title-text"><c:out value="Adding new review!"/></h2>
 		</div>
-		<div class="top">
-			<h2><c:out value="Adding new review!"/></h2>
-		</div>
-		<main class="edit">
+		<div class="edit">
 			<form:form action="/reviews/add" method="POST" modelAttribute="review">
 				<section>
 					<form:label path="restaurant">Restaurant: </form:label>
@@ -109,20 +120,25 @@
 					<form:input path="price"/>
 				</section>
 				<section>
-					<form:label path="review">Review: </form:label>
-					<form:errors path="review" class="text-danger"/>
-					<form:textarea path="review" cols="25" rows="5"/>
+					<form:label path="reviewX">Review: </form:label>
+					<form:errors path="reviewX" class="text-danger"/>
+					<form:textarea path="reviewX" cols="25" rows="5"/>
 				</section>
 				<section>
 					<form:label path="dateVisited">Date Visited: </form:label>
 					<form:errors path="dateVisited" class="text-danger"/>
-					<input type="date" name="dateVisited"/>
+					<form:input type="date" path="dateVisited"/>
 				</section>
-				<form:hidden path="user" value="${sessionScope.userId}"/>
+				<section>
+					<form:errors path="rating" class="text-danger"/>
+					<form:label path="rating">Rating: </form:label>
+					<form:input path="rating"/>
+				</section>
+				<form:hidden path="user" value="${sessionScope.id}"/>
 				<input type="submit" value="Submit"/>
 			</form:form>
 			<form action="/dashboard" method="GET"><input type="submit" value="Cancel"/></form>
-		</main>
+		</div>
 	</div>
 </body>
 </html>

@@ -37,7 +37,7 @@ public class ReviewService {
 		updateReview.setDateVisited(r.getDateVisited());
 		updateReview.setDish(r.getDish());
 		updateReview.setPrice(r.getPrice());
-		updateReview.setReview(r.getReview());
+		updateReview.setReviewX(r.getReviewX());
 		return repo.save(updateReview);
 	}
 	
