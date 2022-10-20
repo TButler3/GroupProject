@@ -17,6 +17,10 @@ public class ReviewService {
 		return repo.findAll();
 	}
 	
+	public List<Review> allReviewsByUserId(Long id){
+		return repo.findByUserId(id);
+	}
+	
 	public Review findReview(Long id) {
 		return repo.findById(id).get();
 	}

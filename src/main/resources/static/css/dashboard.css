@@ -83,8 +83,26 @@ li, a, p {
     color: whitesmoke;
 }
 
+.table-links {
+    display: flex;
+    align-content: center;
+}
+
+/* .delete-link {
+    color: rgb(21, 81, 171);
+    text-decoration: none;
+    margin-bottom: 5px;
+} */
+
+.view.btn.btn-link.delete-link {
+    padding: 0px 12px 6px;
+    color: rgb(21, 81, 171);
+    text-decoration: none;
+}
+
 .table-links a {
     padding-left: 20px;
+    padding-top: 3px;
     color: rgb(21, 81, 171);
 }
 

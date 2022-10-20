@@ -40,6 +40,10 @@ p {
     margin-top: 50px;
 }
 
+.text-danger {
+    display: block;
+}
+
 .form-group {
     margin-top: 10px;
 }

@@ -25,23 +25,23 @@
                     and share your own experience.</p>
                 <div class="form-group">
                     <form:label path="userName" class="placeholder-sub"></form:label>
-                    <form:errors path="userName" class="text-danger"/>
                     <form:input path="userName" placeholder="Username" class="input-box"/>
+                    <form:errors path="userName" class="text-danger"/>
                 </div>
                 <div class="form-group">
                     <form:label path="email" class="placeholder-sub"></form:label>
-                    <form:errors path="email" class="text-danger"/>
                     <form:input path="email" type="email" placeholder="Email" class="input-box"/>
+                    <form:errors path="email" class="text-danger"/>
                 </div>
                 <div class="form-group">
                     <form:label path="password" class="placeholder-sub"></form:label>
-                    <form:errors path="password" class="text-danger"/>
                     <form:password path="password" name="password" placeholder="Password" class="input-box"/>
+                    <form:errors path="password" class="text-danger"/>
                 </div>
                 <div class="form-group">
                     <form:label path="confirm" class="placeholder-sub"></form:label>
-                    <form:errors path="confirm" class="text-danger"/>
                     <form:password path="confirm" name="password" placeholder="Confirm Password" class="input-box"/>
+                    <form:errors path="confirm" class="text-danger"/>
                 </div>
                 <button class="my-3 btn btn-primary" style="width:250px">Sign Up</button>
             </form:form>
