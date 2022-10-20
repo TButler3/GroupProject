@@ -54,6 +54,15 @@ li, a, p {
     position: relative;
 }
 
+.hero-two {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/fun-night-out.jpg");
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
 .inner-text p {
     color: whitesmoke;
     font-family: 'Shadows Into Light', cursive;
@@ -67,6 +76,12 @@ li, a, p {
     height: auto;
     margin-top: 100px;
     margin-left: 60px;
+}
+
+.review-title {
+    text-align: center;
+    font-weight: lighter;
+    margin-bottom: 2px;
 }
 
 .table {
