@@ -90,7 +90,6 @@ public class LoginController {
     
     @GetMapping("/review/new")
     public String newReview(HttpSession session, @ModelAttribute("review") Review review, Model model) {
-    	System.out.println(session.getAttribute("id"));
     	if(session.getAttribute("id") == null) {
     		return "redirect:/";
     	} else {
